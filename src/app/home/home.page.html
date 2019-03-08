@@ -1,5 +1,8 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>
       Inicio
     </ion-title>
@@ -7,10 +10,52 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-item>
-    <ion-input [(ngModel)]="value" clearinput></ion-input>
-  </ion-item>
+  <ion-list>
+    <ion-item>
+      <ion-icon name="help" slot="start"></ion-icon>
+      <ion-label stacked>Cual?</ion-label>
+      <ion-textarea required rows="6" cols="20" placeholder="Enter any notes here..."></ion-textarea>
+    </ion-item>
 
+
+
+    <ion-item>
+      <ion-icon name="person" slot="start"></ion-icon>
+      <ion-label stacked>Nombre:</ion-label>
+      <ion-input [(ngModel)]="nombre" clearinput placeholder="Nombre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="person" slot="start"></ion-icon>
+      <ion-label stacked>Apellidos:</ion-label>
+      <ion-input [(ngModel)]="apellido" clearinput placeholder="Apellido"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="mail" slot="start"></ion-icon>
+      <ion-label stacked>Correo electrónico:</ion-label>
+      <ion-input type="email" [(ngModel)]="email" clearinput placeholder="Correo electrónico"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="calendar" slot="start"></ion-icon>
+      <ion-label stacked slot="start">Fecha de nacimiento:</ion-label>
+      <ion-datetime displayFormat="DD-MM-YYYY" [(ngModel)]="fecha" placeholder="DD-MM-YYY" slot="start"></ion-datetime>
+    </ion-item>
+    <ion-row radio-group>
+      <ion-col>
+        <ion-item>
+          <ion-icon name="man" item-start></ion-icon>
+          <ion-label>Hombre</ion-label>
+          <ion-radio value="1"></ion-radio>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-icon name="woman" item-start></ion-icon>
+          <ion-label>Mujer</ion-label>
+          <ion-radio value="2"></ion-radio>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-list>
   <ion-button expand="full" (click)="enviarFormulario()">Enviar formulario</ion-button>
-  
+
 </ion-content>

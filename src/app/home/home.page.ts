@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -8,14 +9,18 @@ import { NavController } from '@ionic/angular';
 })
 export class HomePage {
 
-  value = 0;
+  nombre = null;
+  apellido = null;
+  email = null;
+  fecha = null;
+  gender = null;
 
-  constructor(private nav:NavController){
+  constructor(private nav: NavController) {}
 
+  
+
+  enviarFormulario() {
+    this.nav.navigateForward(`/segunda/${this.nombre}/${this.apellido}/${this.email}/${this.fecha}`);
+    
   }
-
-  enviarFormulario(){
-    this.nav.navigateForward(`/segunda/${this.value}`);
-  }
-
 }
