@@ -15,12 +15,12 @@ export class HomePage {
   fecha = null;
   gender = null;
 
-  constructor(private nav: NavController) {}
+  constructor(private nav: NavController) { }
 
-  
+
 
   enviarFormulario() {
     this.nav.navigateForward(`/segunda/${this.nombre}/${this.apellido}/${this.email}/${this.fecha}`);
-    
+
   }
 }

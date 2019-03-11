@@ -1,24 +1,34 @@
 ion-card-header {
-   text-align: center;
-   color: var(--ion-color-primary);
-   font-size: 32px;
-   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+  background-color: var(--ion-color-primary);
+  color: white;
+  font-size: 24px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+ion-toolbar {
+  text-align: center;
 }
 
 ion-card {
-   margin-left: auto;
-   margin-right: auto;
-   width: auto;
-   border-radius: 25px; 
-   margin: 20px 10px;
-   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+  border-radius: 25px;
+  margin: 20px 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
 ion-card ion-item {
-    padding-left: 10px;
-    padding-right:10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
-.question{
+ion-textarea {
+  //padding-left: 55px
+  background-color: var(--ion-color-terciary);
+}
 
+ion-label {
+  font-size: 12pt;
+  font-style: oblique;
 }
