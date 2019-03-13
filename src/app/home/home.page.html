@@ -9,74 +9,76 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-list>
+<ion-content>
+  <div class="titulo">
+    <h2>Formulario</h2>
+  </div>
+  <ion-list padding>
     <ion-item>
-      <p class="question"><b>#1 </b>¿Que cambiarías del horario de trabajo actual de la empresa?
-      </p>
+      <h5>#1 <span>¿Que cambiarías del horario de trabajo actual de la empresa?</span></h5>
     </ion-item>
     <ion-item>
-      <ion-textarea required rows="2" cols="5" placeholder="Escribe aquí..."></ion-textarea>
+      <ion-textarea [(ngModel)]="respuesta1" required rows="2" cols="5" placeholder="Escribe aquí..."></ion-textarea>
     </ion-item>
     <ion-item>
-      <p class="question"><b>#1 </b>¿Que cambiarías del horario de trabajo actual de la empresa?
-      </p>
+      <h5>#1 <span>¿Que cambiarías del horario de trabajo actual de la empresa?</span></h5>
     </ion-item>
     <ion-item>
-      <ion-textarea required rows="2" cols="5" placeholder="Escribe aquí..."></ion-textarea>
+      <ion-textarea [(ngModel)]="respuesta2" required rows="2" cols="5" placeholder="Escribe aquí..."></ion-textarea>
     </ion-item>
     <ion-item>
-      <p class="question"><b>#1 </b>¿Que cambiarías del horario de trabajo actual de la empresa?
-      </p>
+      <h5>#1 <span>¿Que cambiarías del horario de trabajo actual de la empresa?</span></h5>
     </ion-item>
     <ion-item>
-      <ion-textarea required rows="2" cols="5" placeholder="Escribe aquí..."></ion-textarea>
+      <ion-textarea [(ngModel)]="respuesta3" required rows="2" cols="5" placeholder="Escribe aquí..."></ion-textarea>
     </ion-item>
   </ion-list>
 
 
-  <ion-card>
-    <ion-card-header><b>Datos de Empleado</b></ion-card-header>
-    <ion-list>
-      <ion-item>
-        <ion-icon name="person" slot="start"></ion-icon>
-        <ion-label stacked>Nombre:</ion-label>
-        <ion-input [(ngModel)]="nombre" clearinput placeholder="Nombre"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="person" slot="start"></ion-icon>
-        <ion-label stacked>Apellidos:</ion-label>
-        <ion-input [(ngModel)]="apellido" clearinput placeholder="Apellido"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="mail" slot="start"></ion-icon>
-        <ion-label stacked>C. electrónico:</ion-label>
-        <ion-input type="email" [(ngModel)]="email" clearinput placeholder="Correo electrónico"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="calendar" slot="start"></ion-icon>
-        <ion-label stacked>F. Nacimiento:</ion-label>
-        <ion-datetime displayFormat="DD-MM-YYYY" [(ngModel)]="fecha" placeholder="DD-MM-YYY">
+  <div class="titulo2">
+    <h2>Datos personales</h2>
+  </div>
+  <ion-list padding>
+    <ion-item>
+      <ion-icon name="person" slot="start"></ion-icon>
+      <div>
+        <h5 stacked>Nombre</h5>
+        <ion-input [(ngModel)]="nombre" required clearinput placeholder="Nombre"></ion-input>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="person" slot="start"></ion-icon>
+      <div>
+        <h5 stacked>Apellidos</h5>
+        <ion-input [(ngModel)]="apellido" required clearinput placeholder="Apellido"></ion-input>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="mail" slot="start"></ion-icon>
+      <div>
+        <h5 stacked>Correo electrónico</h5>
+        <ion-input type="email" [(ngModel)]="email" required clearinput placeholder="Correo electrónico"></ion-input>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="calendar" slot="start"></ion-icon>
+      <div>
+        <h5 stacked>F. Nacimiento</h5>
+        <ion-datetime slot="start" displayFormat="DD-MM-YYYY" [(ngModel)]="fecha" required placeholder="DD-MM-YYYY">
         </ion-datetime>
-      </ion-item>
-      <ion-row radio-group>
-        <ion-col>
-          <ion-item>
-            <ion-icon name="man" item-start></ion-icon>
-            <ion-label>Hombre</ion-label>
-            <ion-radio value="1"></ion-radio>
-          </ion-item>
-        </ion-col>
-        <ion-col>
-          <ion-item>
-            <ion-icon name="woman" item-start></ion-icon>
-            <ion-label>Mujer</ion-label>
-            <ion-radio value="2"></ion-radio>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-    </ion-list>
-  </ion-card>
-  <ion-button expand="full" (click)="enviarFormulario()">Enviar formulario</ion-button>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="people" slot="start"></ion-icon>
+      <div>
+        <h5 stacked>Género</h5>
+        <ion-select [(ngModel)]="gender" cancelText="Nah" okText="Okay!" placeholder="Elige tu género" expand="full">
+          <ion-select-option>Papá</ion-select-option>
+          <ion-select-option>Mamá</ion-select-option>
+        </ion-select>
+      </div>
+    </ion-item>
+  </ion-list>
+  <ion-button expand="full" (click)="enviarFormulario()" id="button" >Enviar formulario</ion-button>
 
 </ion-content>
