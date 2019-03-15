@@ -18,7 +18,8 @@
       <ion-icon name="help" slot="start"></ion-icon>
       <div>
         <h6 stacked>¿Qué conjunto de habilidades necesitamos en nuestro equipo?</h6>
-        <ion-textarea [(ngModel)]="respuesta1" (click)="fun()" required clearinput rows="1" cols="5" placeholder="Escribe aquí...">
+        <ion-textarea [(ngModel)]="datos.respuesta1" required clearinput rows="1" cols="5"
+          placeholder="Escribe aquí...">
         </ion-textarea>
       </div>
       <ion-icon class="borrar" name="backspace" slot="end" (click)="borrarTxt(6)"></ion-icon>
@@ -27,7 +28,8 @@
       <ion-icon name="help" slot="start"></ion-icon>
       <div>
         <h6 stacked>¿Estamos siguiendo nuestros ideales?</h6>
-        <ion-textarea (click)="fun()" [(ngModel)]="respuesta2" required rows="1" cols="5" placeholder="Escribe aquí..."></ion-textarea>
+        <ion-textarea [(ngModel)]="datos.respuesta2" required rows="1" cols="5" placeholder="Escribe aquí...">
+        </ion-textarea>
       </div>
       <ion-icon class="borrar" name="backspace" slot="end" (click)="borrarTxt(7)"></ion-icon>
     </ion-item>
@@ -35,7 +37,8 @@
       <ion-icon name="help" slot="start"></ion-icon>
       <div>
         <h6 stacked>¿Cómo es tu equilibrio de trabajo y vida?</h6>
-        <ion-textarea (click)="fun()" [(ngModel)]="respuesta3" required rows="1" cols="5" placeholder="Escribe aquí..."></ion-textarea>
+        <ion-textarea [(ngModel)]="datos.respuesta3" required rows="1" cols="5" placeholder="Escribe aquí...">
+        </ion-textarea>
       </div>
       <ion-icon class="borrar" name="backspace" slot="end" (click)="borrarTxt(8)"></ion-icon>
     </ion-item>
@@ -43,7 +46,8 @@
       <ion-icon name="help" slot="start"></ion-icon>
       <div>
         <h6 stacked>¿Te gusta lo que haces?</h6>
-        <ion-textarea (click)="fun()" [(ngModel)]="respuesta4" required rows="1" cols="5" placeholder="Escribe aquí..."></ion-textarea>
+        <ion-textarea [(ngModel)]="datos.respuesta4" required rows="1" cols="5" placeholder="Escribe aquí...">
+        </ion-textarea>
       </div>
       <ion-icon class="borrar" name="backspace" slot="end" (click)="borrarTxt(9)"></ion-icon>
     </ion-item>
@@ -51,7 +55,8 @@
       <ion-icon name="help" slot="start"></ion-icon>
       <div>
         <h6 stacked>¿Hay alguna pregunta que no hicimos, pero deberíamos haber hecho?</h6>
-        <ion-textarea (click)="fun()" [(ngModel)]="respuesta5"  required rows="1" cols="5" placeholder="Escribe aquí..."></ion-textarea>
+        <ion-textarea [(ngModel)]="datos.respuesta5" required rows="1" cols="5" placeholder="Escribe aquí...">
+        </ion-textarea>
       </div>
       <ion-icon class="borrar" name="backspace" slot="end" (click)="borrarTxt(10)"></ion-icon>
     </ion-item>
@@ -65,8 +70,19 @@
     <ion-item>
       <ion-icon name="person" slot="start"></ion-icon>
       <div>
+        <h5 stacked>DNI</h5>
+        <ion-input type="text" id="dni" name="dni" [(ngModel)]="datos.dni" required clearinput placeholder="DNI"
+          slot="start">
+        </ion-input>
+      </div>
+      <ion-icon class="borrar" name="backspace" slot="end" (click)="borrarTxt(0)"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="person" slot="start"></ion-icon>
+      <div>
         <h5 stacked>Nombre</h5>
-        <ion-input type="text" id="name" name="name" (click)="fun()" [(ngModel)]="nombre" required clearinput placeholder="Nombre" slot="start">
+        <ion-input type="text" id="name" name="name" [(ngModel)]="datos.nombre" required clearinput placeholder="Nombre"
+          slot="start">
         </ion-input>
       </div>
       <ion-icon class="borrar" name="backspace" slot="end" (click)="borrarTxt(1)"></ion-icon>
@@ -75,7 +91,7 @@
       <ion-icon name="person" slot="start"></ion-icon>
       <div>
         <h5 stacked>Apellidos</h5>
-        <ion-input (click)="fun()" [(ngModel)]="apellido" required clearinput placeholder="Apellido"></ion-input>
+        <ion-input [(ngModel)]="datos.apellido" required clearinput placeholder="Apellido"></ion-input>
       </div>
       <ion-icon class="borrar" name="backspace" slot="end" (click)="borrarTxt(2)"></ion-icon>
     </ion-item>
@@ -83,7 +99,8 @@
       <ion-icon name="mail" slot="start"></ion-icon>
       <div>
         <h5 stacked>Correo electrónico</h5>
-        <ion-input type="email" (click)="fun()" [(ngModel)]="email" required clearinput placeholder="Correo electrónico"></ion-input>
+        <ion-input type="email" [(ngModel)]="datos.email" required clearinput placeholder="Correo electrónico">
+        </ion-input>
       </div>
       <ion-icon class="borrar" name="backspace" slot="end" (click)="borrarTxt(3)"></ion-icon>
     </ion-item>
@@ -91,7 +108,8 @@
       <ion-icon name="calendar" slot="start"></ion-icon>
       <div>
         <h5 stacked>F. Nacimiento</h5>
-        <ion-datetime slot="start" displayFormat="DD-MM-YYYY" (click)="fun()" [(ngModel)]="fecha" required placeholder="DD-MM-YYYY">
+        <ion-datetime slot="start" displayFormat="DD-MM-YYYY" [(ngModel)]="datos.fecha" required
+          placeholder="DD-MM-YYYY">
         </ion-datetime>
       </div>
       <ion-icon class="borrar" name="backspace" slot="end" (click)="borrarTxt(4)"></ion-icon>
@@ -100,7 +118,7 @@
       <ion-icon name="people" slot="start"></ion-icon>
       <div>
         <h5 stacked>Género</h5>
-        <ion-select required (click)="fun()" [(ngModel)]="gender" cancelText="Nah" okText="Okay!" placeholder="Elige tu género">
+        <ion-select required [(ngModel)]="datos.genero" cancelText="Nah" okText="Okay!" placeholder="Elige tu género">
           <ion-select-option>Hombre</ion-select-option>
           <ion-select-option>Mujer</ion-select-option>
         </ion-select>
@@ -108,8 +126,13 @@
       <ion-icon class="borrar" name="backspace" slot="end" (click)="borrarTxt(5)"></ion-icon>
     </ion-item>
   </ion-list>
-  <ion-button expand="full" (click)="fun()" hidden></ion-button>
-  <ion-button expand="full" onClick="if(this.name!=null){btn.disabled=true}" hidden></ion-button>
-  <ion-button expand="full" (click)="enviarFormulario()" id="btn" name="btn">Enviar formulario</ion-button>
+  <ion-list>
+    <ion-item lines="none">
+      <ion-checkbox (click)="isChecked($event)"></ion-checkbox>
+      <ion-label padding>Aceptar términos</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="full" (click)="guardar()" id="btn" name="btn" disabled>Enviar formulario</ion-button>
 
 </ion-content>

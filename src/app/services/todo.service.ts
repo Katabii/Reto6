@@ -3,11 +3,21 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+
 export interface Todo {
   id?: string;
-  task: string;
-  priority: number;
-  createdAt: number;
+  respuesta1: string,
+  respuesta2: string,
+  respuesta3: string,
+  respuesta4: string,
+  respuesta5: string,
+
+  dni: string,
+  nombre: string,
+  apellido: string,
+  email: string,
+  fecha: Date,
+  genero: string
 }
 
 @Injectable({
