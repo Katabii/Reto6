@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, LoadingController } from '@ionic/angular';
-import { ActivatedRoute } from '@angular/router';
+import { NavController, LoadingController, ToastController, PopoverController, AlertController } from '@ionic/angular';
+import { ActivatedRoute, PRIMARY_OUTLET } from '@angular/router';
 import { TodoService, Todo } from '../services/todo.service';
+import { reduce } from 'rxjs/operators';
+import { R3TargetBinder } from '@angular/compiler';
 
 
 @Component({
@@ -23,30 +25,57 @@ export class HomePage implements OnInit {
     apellido: null,
     email: null,
     fecha: null,
-    genero: null
+    genero: null,
   }
   datoId = null;
 
-
-  constructor(private nav: NavController, private loadingController: LoadingController, private route: ActivatedRoute, private service: TodoService) {
+  constructor(private nav: NavController, private loadingController: LoadingController, private route: ActivatedRoute, private service: TodoService, private toastControler: ToastController, private alertController: AlertController) {
 
   }
 
   ngOnInit(): void {
 
   }
-  guardar() {
+
+  async guardar() {
     if (this.datos.dni == null || this.datos.nombre == null || this.datos.apellido == null || this.datos.email == null || this.datos.fecha == null || this.datos.genero == null || this.datos.respuesta1 == null || this.datos.respuesta2 == null || this.datos.respuesta3 == null || this.datos.respuesta4 == null || this.datos.respuesta5 == null) {
-      alert("Faltan campos por rellenar");
+      this.toast("Faltan campos por rellenar");
     } else {
       this.saveTodo();
-      alert("Guardado correctamente");
+      this.toast("Datos guardados correctamente");
     }
+  }
+  async toast(mensaje) {
+    const toast = await this.toastControler.create({
+      message: mensaje,
+      position: 'top',
+      duration: 5000,
+    });
+    await toast.present();
+  }
+  async acceptTerms() {
+    const alert = await this.alertController.create({
+      header: 'Términos y condiciones',
+      message: '<p class="terminos" padding>Los datos de carácter personal que nos remita a través de este formulario, quedarán incorporados en los sistemas de información.<br><br>Garantizamos la confidencialidad de todos los datos facilitados. Además de los mínimos establecidos por la legislación, la recogida y tratamiento de los datos se efectúan bajo niveles de seguridad que impiden la pérdida o manipulación de los datos.</p>',
+      buttons: [
+        {
+          text: 'Denegar',
+          role: 'cancel',
+        }, {
+          text: 'Aceptar',
+          handler: () => {
+            this.guardar();
+          }
+        }
+      ]
+    });
+    await alert.present();
+
   }
   async saveTodo() {
 
     const loading = await this.loadingController.create({
-      message: 'Guardando...'
+      message: 'Guardando...',
     });
     await loading.present();
 
@@ -61,15 +90,15 @@ export class HomePage implements OnInit {
     }
   }
 
-  isChecked(e): void {
+  /*isChecked(e): void {
     var isChecked = e.currentTarget.checked;
     console.log(isChecked);//undefined
     if (isChecked) {
       document.getElementById("btn").disabled = true;
-    }else{
+    } else {
       document.getElementById("btn").disabled = false;
     }
-  }
+  }*/
 
   borrarTxt(num) {
     switch (num) {

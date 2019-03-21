@@ -4,21 +4,18 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      Inicio
+        Encuesta Analphabet
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content (click)="fun()">
-  <div class="titulo">
-    <h2>Formulario</h2>
-  </div>
+<ion-content>
   <ion-list padding>
     <ion-item>
       <ion-icon name="help" slot="start"></ion-icon>
       <div>
         <h6 stacked>¿Qué conjunto de habilidades necesitamos en nuestro equipo?</h6>
-        <ion-textarea [(ngModel)]="datos.respuesta1" required clearinput rows="1" cols="5"
+        <ion-textarea [(ngModel)]="datos.respuesta1" required clearinput rows="3" cols="5"
           placeholder="Escribe aquí...">
         </ion-textarea>
       </div>
@@ -28,7 +25,7 @@
       <ion-icon name="help" slot="start"></ion-icon>
       <div>
         <h6 stacked>¿Estamos siguiendo nuestros ideales?</h6>
-        <ion-textarea [(ngModel)]="datos.respuesta2" required rows="1" cols="5" placeholder="Escribe aquí...">
+        <ion-textarea [(ngModel)]="datos.respuesta2" required rows="3" cols="5" placeholder="Escribe aquí...">
         </ion-textarea>
       </div>
       <ion-icon class="borrar" name="backspace" slot="end" (click)="borrarTxt(7)"></ion-icon>
@@ -37,7 +34,7 @@
       <ion-icon name="help" slot="start"></ion-icon>
       <div>
         <h6 stacked>¿Cómo es tu equilibrio de trabajo y vida?</h6>
-        <ion-textarea [(ngModel)]="datos.respuesta3" required rows="1" cols="5" placeholder="Escribe aquí...">
+        <ion-textarea [(ngModel)]="datos.respuesta3" required rows="3" cols="5" placeholder="Escribe aquí...">
         </ion-textarea>
       </div>
       <ion-icon class="borrar" name="backspace" slot="end" (click)="borrarTxt(8)"></ion-icon>
@@ -46,7 +43,7 @@
       <ion-icon name="help" slot="start"></ion-icon>
       <div>
         <h6 stacked>¿Te gusta lo que haces?</h6>
-        <ion-textarea [(ngModel)]="datos.respuesta4" required rows="1" cols="5" placeholder="Escribe aquí...">
+        <ion-textarea [(ngModel)]="datos.respuesta4" required rows="3" cols="5" placeholder="Escribe aquí...">
         </ion-textarea>
       </div>
       <ion-icon class="borrar" name="backspace" slot="end" (click)="borrarTxt(9)"></ion-icon>
@@ -55,7 +52,7 @@
       <ion-icon name="help" slot="start"></ion-icon>
       <div>
         <h6 stacked>¿Hay alguna pregunta que no hicimos, pero deberíamos haber hecho?</h6>
-        <ion-textarea [(ngModel)]="datos.respuesta5" required rows="1" cols="5" placeholder="Escribe aquí...">
+        <ion-textarea [(ngModel)]="datos.respuesta5" required rows="3" cols="5" placeholder="Escribe aquí...">
         </ion-textarea>
       </div>
       <ion-icon class="borrar" name="backspace" slot="end" (click)="borrarTxt(10)"></ion-icon>
@@ -71,8 +68,8 @@
       <ion-icon name="person" slot="start"></ion-icon>
       <div>
         <h5 stacked>DNI</h5>
-        <ion-input type="text" id="dni" name="dni" [(ngModel)]="datos.dni" required clearinput placeholder="DNI"
-          slot="start">
+        <ion-input maxlength="9" type="text" id="dni" name="dni" [(ngModel)]="datos.dni" required clearinput
+          placeholder="DNI" slot="start">
         </ion-input>
       </div>
       <ion-icon class="borrar" name="backspace" slot="end" (click)="borrarTxt(0)"></ion-icon>
@@ -90,7 +87,7 @@
     <ion-item>
       <ion-icon name="person" slot="start"></ion-icon>
       <div>
-        <h5 stacked>Apellidos</h5>
+        <h5 stacked>Apellido</h5>
         <ion-input [(ngModel)]="datos.apellido" required clearinput placeholder="Apellido"></ion-input>
       </div>
       <ion-icon class="borrar" name="backspace" slot="end" (click)="borrarTxt(2)"></ion-icon>
@@ -126,13 +123,7 @@
       <ion-icon class="borrar" name="backspace" slot="end" (click)="borrarTxt(5)"></ion-icon>
     </ion-item>
   </ion-list>
-  <ion-list>
-    <ion-item lines="none">
-      <ion-checkbox (click)="isChecked($event)"></ion-checkbox>
-      <ion-label padding>Aceptar términos</ion-label>
-    </ion-item>
-  </ion-list>
 
-  <ion-button expand="full" (click)="guardar()" id="btn" name="btn" disabled>Enviar formulario</ion-button>
+  <ion-button expand="full" (click)="acceptTerms()" id="btn" name="btn">Enviar formulario</ion-button>
 
 </ion-content>

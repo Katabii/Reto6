@@ -1,6 +1,8 @@
 {
   "name": "encuesta",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular",
   "id": "2a91637e"
 }
