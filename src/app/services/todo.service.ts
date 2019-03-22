@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { ToastController } from '@ionic/angular';
 
 
 export interface Todo {
@@ -16,7 +17,7 @@ export interface Todo {
   nombre: string,
   apellido: string,
   email: string,
-  fecha: Date,
+  fecha: string,
   genero: string
 }
 
@@ -29,7 +30,7 @@ export class TodoService {
 
   private todos: Observable<Todo[]>;
 
-  constructor(db: AngularFirestore) {
+  constructor(db: AngularFirestore, private toastController: ToastController) {
     this.todosCollection = db.collection<Todo>('todos');
 
     this.todos = this.todosCollection.snapshotChanges().pipe(
@@ -61,4 +62,6 @@ export class TodoService {
   removeTodo(id) {
     return this.todosCollection.doc(id).delete();
   }
+
+ 
 }

@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, LoadingController, ToastController, PopoverController, AlertController } from '@ionic/angular';
+import { NavController, LoadingController, ToastController, AlertController } from '@ionic/angular';
 import { ActivatedRoute, PRIMARY_OUTLET } from '@angular/router';
 import { TodoService, Todo } from '../services/todo.service';
-import { reduce } from 'rxjs/operators';
-import { R3TargetBinder } from '@angular/compiler';
 
 
 @Component({
@@ -29,7 +27,7 @@ export class HomePage implements OnInit {
   }
   datoId = null;
 
-  constructor(private nav: NavController, private loadingController: LoadingController, private route: ActivatedRoute, private service: TodoService, private toastControler: ToastController, private alertController: AlertController) {
+  constructor(private nav: NavController, private loadingController: LoadingController, private route: ActivatedRoute, private service: TodoService, private toastController: ToastController, private alertController: AlertController) {
 
   }
 
@@ -38,15 +36,14 @@ export class HomePage implements OnInit {
   }
 
   async guardar() {
-    if (this.datos.dni == null || this.datos.nombre == null || this.datos.apellido == null || this.datos.email == null || this.datos.fecha == null || this.datos.genero == null || this.datos.respuesta1 == null || this.datos.respuesta2 == null || this.datos.respuesta3 == null || this.datos.respuesta4 == null || this.datos.respuesta5 == null) {
+    if (this.datos.dni == null || this.datos.nombre == null || this.datos.apellido == null || this.datos.email == null || this.datos.fecha == null || this.datos.genero == null || this.datos.respuesta1 == null || this.datos.respuesta2 == null || this.datos.respuesta3 == null || this.datos.respuesta4 == null || this.datos.respuesta5 == null || this.datos.dni == "" || this.datos.nombre == "" || this.datos.apellido == "" || this.datos.email == "" || this.datos.fecha == "" || this.datos.genero == "" || this.datos.respuesta1 == "" || this.datos.respuesta2 == "" || this.datos.respuesta3 == "" || this.datos.respuesta4 == "" || this.datos.respuesta5 == "") {
       this.toast("Faltan campos por rellenar");
     } else {
       this.saveTodo();
-      this.toast("Datos guardados correctamente");
     }
   }
-  async toast(mensaje) {
-    const toast = await this.toastControler.create({
+  public async toast(mensaje) {
+    const toast = await this.toastController.create({
       message: mensaje,
       position: 'top',
       duration: 5000,
@@ -73,9 +70,9 @@ export class HomePage implements OnInit {
 
   }
   async saveTodo() {
-
     const loading = await this.loadingController.create({
       message: 'Guardando...',
+      animated: true,
     });
     await loading.present();
 
