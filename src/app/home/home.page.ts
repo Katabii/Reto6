@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { LoadingController, ToastController, AlertController } from '@ionic/angular';
-import { Router, ActivatedRoute } from '@angular/router';
+import { LoadingController, AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 import { Todo, FirebaseService } from '../services/firebase.service';
-import { LoginPage, email } from '../login/login.page';
+import { email } from '../login/login.page';
 
 @Component({
   selector: 'app-home',
@@ -29,8 +29,6 @@ export class HomePage implements OnInit {
     private authService: AuthService,
     private service: FirebaseService,
     private router: Router,
-    private route: ActivatedRoute,
-    private toastController: ToastController,
     private alertController: AlertController,
     private loadingController: LoadingController
   ) { }
