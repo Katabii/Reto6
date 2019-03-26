@@ -8,7 +8,7 @@
   <form class="form" [formGroup]="validations_form" (ngSubmit)="tryLogin(validations_form.value)">
     <ion-item>
       <ion-label position="floating" color="primary">Correo Electrónico</ion-label>
-      <ion-input type="text" formControlName="email" [(ngModel)]="email"></ion-input>
+      <ion-input type="text" (click)="quitarMsgErr()" formControlName="email"></ion-input>
     </ion-item>
     <div class="validation-errors">
       <ng-container *ngFor="let validation of validation_messages.email">
@@ -19,7 +19,7 @@
     </div>
     <ion-item>
       <ion-label position="floating" color="primary">Contraseña</ion-label>
-      <ion-input type="password" formControlName="password"></ion-input>
+      <ion-input type="password" (click)="quitarMsgErr()" formControlName="password"></ion-input>
     </ion-item>
     <div class="validation-errors">
       <ng-container *ngFor="let validation of validation_messages.password">

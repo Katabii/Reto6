@@ -7,8 +7,10 @@ import { AngularFireAuth } from '@angular/fire/auth';
 export interface Todo {
   respuesta1: string,
   respuesta2: string,
+  textAreaRespuesta2: string,
   respuesta3: string,
   respuesta4: string,
+  textAreaRespuesta4: string,
   respuesta5: string,
 }
 
@@ -66,17 +68,6 @@ export class FirebaseService {
     })
   }
 
-  deleteTask(taskKey){
-    return new Promise<any>((resolve, reject) => {
-      let currentUser = firebase.auth().currentUser;
-      this.afs.collection('people').doc(currentUser.uid).collection('tasks').doc(taskKey).delete()
-      .then(
-        res => resolve(res),
-        err => reject(err)
-      )
-    })
-  }
-
   createTask(todo:Todo){
     return new Promise<any>((resolve, reject) => {
       let currentUser = firebase.auth().currentUser;
@@ -90,34 +81,5 @@ export class FirebaseService {
     })
   }
 
-  encodeImageUri(imageUri, callback) {
-    var c = document.createElement('canvas');
-    var ctx = c.getContext("2d");
-    var img = new Image();
-    img.onload = function () {
-      var aux:any = this;
-      c.width = aux.width;
-      c.height = aux.height;
-      ctx.drawImage(img, 0, 0);
-      var dataURL = c.toDataURL("image/jpeg");
-      callback(dataURL);
-    };
-    img.src = imageUri;
-  };
 
-  uploadImage(imageURI, randomId){
-    return new Promise<any>((resolve, reject) => {
-      let storageRef = firebase.storage().ref();
-      let imageRef = storageRef.child('image').child(randomId);
-      this.encodeImageUri(imageURI, function(image64){
-        imageRef.putString(image64, 'data_url')
-        .then(snapshot => {
-          snapshot.ref.getDownloadURL()
-          .then(res => resolve(res))
-        }, err => {
-          reject(err);
-        })
-      })
-    })
-  }
 }

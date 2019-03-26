@@ -4,7 +4,8 @@
       <ion-back-button (click)="logout()"></ion-back-button>
     </ion-buttons>
     <ion-title>
-      Encuesta Analphabet
+      Encuesta Analphabet<br>
+      <span>{{email}}</span>
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -12,17 +13,17 @@
 <ion-content>
   <ion-list padding lines="none">
     <ion-item>
-      <ion-icon name="help" slot="start"></ion-icon>
+      <ion-icon name="chatbubbles" slot="start"></ion-icon>
       <div>
-        <h6 stacked position="floating">¿Qué conjunto de habilidades necesitamos en nuestro equipo?</h6>
+        <h6 stacked>¿Qué conjunto de habilidades necesitamos en nuestro equipo?</h6>
         <ion-textarea [(ngModel)]="datos.respuesta1" required clearinput rows="3" cols="5"
           placeholder="Escribe aquí...">
         </ion-textarea>
       </div>
-      <ion-icon class="borrar" name="backspace" slot="end" (click)="borrarTxt(6)"></ion-icon>
+      <ion-icon class="borrar" name="backspace" slot="end" (click)="borrarTxt(1)"></ion-icon>
     </ion-item>
     <ion-item>
-      <ion-icon name="help" slot="start"></ion-icon>
+      <ion-icon name="chatboxes" slot="start"></ion-icon>
       <div>
         <h6 stacked>¿Estamos siguiendo nuestros ideales?</h6>
         <ion-radio-group [(ngModel)]="datos.respuesta2" required>
@@ -36,19 +37,26 @@
           </ion-item>
         </ion-radio-group>
       </div>
-      <ion-icon class="borrar" name="backspace" slot="end" (click)="borrarTxt(7)" hidden></ion-icon>
     </ion-item>
-    <ion-item>
-      <ion-icon name="help" slot="start"></ion-icon>
+    <ion-item id="res2ta" [hidden]="esconderTextArea(2)">
       <div>
-        <h6 stacked>¿Cómo es tu equilibrio de trabajo y vida?</h6>
-        <ion-textarea [(ngModel)]="datos.respuesta3" required rows="3" cols="5" placeholder="Escribe aquí...">
+        <ion-textarea required placeholder="¿Por qué?" [(ngModel)]="datos.textAreaRespuesta2" slot="start">
         </ion-textarea>
       </div>
-      <ion-icon class="borrar" name="backspace" slot="end" (click)="borrarTxt(8)"></ion-icon>
+      <ion-icon class="borrar" name="backspace" slot="end" (click)="borrarTxt(2)"></ion-icon>
     </ion-item>
     <ion-item>
-      <ion-icon name="help" slot="start"></ion-icon>
+      <ion-icon name="chatbubbles" slot="start"></ion-icon>
+      <div>
+        <h6 stacked>¿Cómo es tu equilibrio de trabajo y vida?</h6>
+        <ion-textarea [(ngModel)]="datos.respuesta3" required rows="3" cols="5"
+          placeholder="Escribe aquí...">
+        </ion-textarea>
+      </div>
+      <ion-icon class="borrar" name="backspace" slot="end" (click)="borrarTxt(3)"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="chatboxes" slot="start"></ion-icon>
       <div>
         <h6 stacked>¿Te gusta lo que haces?</h6>
         <ion-radio-group [(ngModel)]="datos.respuesta4" required>
@@ -62,22 +70,22 @@
           </ion-item>
         </ion-radio-group>
       </div>
-      <ion-icon class="borrar" name="backspace" slot="end" (click)="borrarTxt(9)" hidden></ion-icon>
+    </ion-item>
+    <ion-item id="res4ta" [hidden]="esconderTextArea(4)">
+      <div>
+        <ion-textarea required placeholder="¿Por qué?" [(ngModel)]="datos.textAreaRespuesta4"></ion-textarea>
+      </div>
+      <ion-icon class="borrar" name="backspace" slot="end" (click)="borrarTxt(4)"></ion-icon>
     </ion-item>
     <ion-item>
-      <ion-icon name="help" slot="start"></ion-icon>
+      <ion-icon name="chatbubbles" slot="start"></ion-icon>
       <div>
         <h6 stacked>¿Hay alguna pregunta que no hicimos, pero deberíamos haber hecho?</h6>
         <ion-textarea [(ngModel)]="datos.respuesta5" required rows="3" cols="5" placeholder="Escribe aquí...">
         </ion-textarea>
       </div>
-      <ion-icon class="borrar" name="backspace" slot="end" (click)="borrarTxt(10)"></ion-icon>
+      <ion-icon class="borrar" name="backspace" slot="end" (click)="borrarTxt(5)"></ion-icon>
     </ion-item>
   </ion-list>
-
-  <ion-button expand="full" (click)="acceptTerms()" id="btn" name="btn">Enviar formulario</ion-button>
+  <ion-button expand="full" (click)="acceptTerms()" id="btn" name="btn" [disabled]="comprobarBtn()">Enviar formulario</ion-button>
 </ion-content>
-
-<ion-footer>
-  <ion-toolbar class="footer" color="primary">Usuario: {{ email }}</ion-toolbar>
-</ion-footer>

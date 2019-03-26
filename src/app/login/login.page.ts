@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
+
+export var email: string;
 
 @Component({
   selector: 'app-login',
@@ -10,8 +13,6 @@ import { Router } from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
-  email: null;
-  
   validations_form: FormGroup;
   errorMessage: string = '';
 
@@ -29,7 +30,8 @@ export class LoginPage implements OnInit {
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private loadingController: LoadingController
   ) { }
 
   ngOnInit() {
@@ -46,13 +48,24 @@ export class LoginPage implements OnInit {
   }
 
   tryLogin(value) {
+    email = value.email;
     this.authService.doLogin(value)
-      .then(res => {
+      .then(async res => {
+        const loading = await this.loadingController.create({
+          message: 'Cargando...',
+          animated: true,
+          duration: 850,
+        });
+        await loading.present();
         this.router.navigate(["/home"]);
-        alert(this.email);
+        this.validations_form.reset();
       }, err => {
         this.errorMessage = "El usuario o la contraseña son incorrectos.";
         console.log(err)
       })
+  }
+
+  quitarMsgErr() {
+    this.errorMessage = "";
   }
 }

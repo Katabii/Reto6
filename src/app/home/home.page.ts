@@ -3,7 +3,7 @@ import { AuthService } from '../services/auth.service';
 import { LoadingController, ToastController, AlertController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Todo, FirebaseService } from '../services/firebase.service';
-import { LoginPage } from '../login/login.page';
+import { LoginPage, email } from '../login/login.page';
 
 @Component({
   selector: 'app-home',
@@ -12,12 +12,15 @@ import { LoginPage } from '../login/login.page';
 })
 export class HomePage implements OnInit {
 
-  email: LoginPage["email"];
+  email: string;
+
   datos: Todo = {
     respuesta1: null,
     respuesta2: null,
+    textAreaRespuesta2: null,
     respuesta3: null,
     respuesta4: null,
+    textAreaRespuesta4: null,
     respuesta5: null
   }
 
@@ -33,24 +36,40 @@ export class HomePage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.toast("sdc" + this.email);
+    this.email = email;
   }
 
-  async guardar() {
-    if (this.datos.respuesta1 == null || this.datos.respuesta2 == null || this.datos.respuesta3 == null || this.datos.respuesta4 == null || this.datos.respuesta5 == null || this.datos.respuesta1 == "" || this.datos.respuesta2 == "" || this.datos.respuesta3 == "" || this.datos.respuesta4 == "" || this.datos.respuesta5 == "") {
-      this.toast("Faltan campos por rellenar");
-    } else {
-      this.saveTodo();
+  esconderTextArea(value) {
+    switch (value) {
+      case 2:
+        if (this.datos.respuesta2 == "No") {
+          return false;
+        } else {
+          return true;
+        }
+        break;
+      case 4:
+        if (this.datos.respuesta4 == "No") {
+          return false;
+        } else {
+          return true;
+        }
+        break;
     }
   }
-  public async toast(mensaje) {
-    const toast = await this.toastController.create({
-      message: mensaje,
-      position: 'top',
-      duration: 5000,
-    });
-    await toast.present();
+
+  comprobarBtn() {
+    if (this.datos.respuesta1 == null || this.datos.respuesta2 == null || this.datos.respuesta3 == null || this.datos.respuesta4 == null || this.datos.respuesta5 == null || this.datos.respuesta1 == "" || this.datos.respuesta2 == "" || this.datos.respuesta3 == "" || this.datos.respuesta4 == "" || this.datos.respuesta5 == "") {
+      return true;
+    } else if (this.datos.respuesta2 == "No" && (this.datos.textAreaRespuesta2 == null || this.datos.textAreaRespuesta2 == "")) {
+      return true;
+    } else if (this.datos.respuesta4 == "No" && (this.datos.textAreaRespuesta4 == null || this.datos.textAreaRespuesta4 == "")) {
+      return true;
+    } else {
+      return false;
+    }
   }
+
   async acceptTerms() {
     const alert = await this.alertController.create({
       header: 'Términos y condiciones',
@@ -62,14 +81,14 @@ export class HomePage implements OnInit {
         }, {
           text: 'Aceptar',
           handler: () => {
-            this.guardar();
+            this.saveTodo();
           }
         }
       ]
     });
     await alert.present();
-
   }
+
   async saveTodo() {
     const saving = await this.loadingController.create({
       message: 'Guardando...',
@@ -82,37 +101,6 @@ export class HomePage implements OnInit {
     });
 
   }
-
-  /*isChecked(e): void {
-    var isChecked = e.currentTarget.checked;
-    console.log(isChecked);//undefined
-    if (isChecked) {
-      document.getElementById("btn").disabled = true;
-    } else {
-      document.getElementById("btn").disabled = false;
-    }
-  }*/
-
-  borrarTxt(num) {
-    switch (num) {
-      case 1:
-        this.datos.respuesta1 = null;
-        break;
-      case 2:
-        this.datos.respuesta2 = null;
-        break;
-      case 3:
-        this.datos.respuesta3 = null;
-        break;
-      case 4:
-        this.datos.respuesta4 = null;
-        break;
-      case 5:
-        this.datos.respuesta5 = null;
-        break;
-    }
-  }
-
 
   async logout() {
     const loading = await this.loadingController.create({
@@ -128,6 +116,26 @@ export class HomePage implements OnInit {
       }, err => {
         console.log(err);
       })
+  }
+
+  borrarTxt(num) {
+    switch (num) {
+      case 1:
+        this.datos.respuesta1 = null;
+        break;
+      case 2:
+        this.datos.textAreaRespuesta2 = null;
+        break;
+      case 3:
+        this.datos.respuesta3 = null;
+        break;
+      case 4:
+        this.datos.textAreaRespuesta4 = null;
+        break;
+      case 5:
+        this.datos.respuesta5 = null;
+        break;
+    }
   }
 
 }
