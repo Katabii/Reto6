@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { LoadingController, AlertController } from '@ionic/angular';
+import { LoadingController, AlertController, Platform, NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Todo, FirebaseService } from '../services/firebase.service';
 import { email } from '../login/login.page';
@@ -30,11 +30,20 @@ export class HomePage implements OnInit {
     private service: FirebaseService,
     private router: Router,
     private alertController: AlertController,
-    private loadingController: LoadingController
-  ) { }
+    private loadingController: LoadingController,
+    private platform: Platform,
+  ) { this.backButtonEvent(); }
 
   ngOnInit() {
     this.email = email;
+
+  }
+  backButtonEvent() {
+    this.platform.backButton.subscribe(() => {
+      if (this.router.url === '/home') {
+        this.logout();
+      }
+    });
   }
 
   esconderTextArea(value) {

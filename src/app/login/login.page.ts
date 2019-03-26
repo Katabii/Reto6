@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, Platform } from '@ionic/angular';
+import { HomePage } from '../home/home.page';
 
 export var email: string;
 
@@ -31,8 +32,9 @@ export class LoginPage implements OnInit {
     private authService: AuthService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private loadingController: LoadingController
-  ) { }
+    private loadingController: LoadingController,
+    private platform: Platform,
+  ) { this.backButtonEvent(); }
 
   ngOnInit() {
     this.validations_form = this.formBuilder.group({
@@ -44,6 +46,14 @@ export class LoginPage implements OnInit {
         Validators.minLength(5),
         Validators.required
       ])),
+    });
+  }
+
+  backButtonEvent() {
+    this.platform.backButton.subscribe(() => {
+      if (this.router.url === '/login') {
+        navigator['app'].exitApp();
+      }
     });
   }
 
