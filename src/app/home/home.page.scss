@@ -1,13 +1,125 @@
-.empty-list {
-  font-size: 22px;
-  font-weight: 500;
+/*--HEADER--*/
+ion-title {
   text-align: center;
-  margin-top: 40px;
-  color: var(--ion-color-medium);
+  font-weight: bold;
+  padding-inline-start: 0%;
 }
-span{
+.mail {
   text-align: center;
-  font-size: 10pt;
-  
+  font-size: 80%;
+  font-style: italic;
+  font-weight: bold;
+  color: rgb(245, 245, 245);
+  margin-top: 3px;
 }
+span {
+  text-align: center;
 
+}
+/*--CONTENT--*/
+/*---GENERAL---*/
+/*ion-textarea {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #670081;
+  border-radius: 5px;
+  background-color: #fdf6ff;
+  padding: 0px 5px 0px 5px;
+}*/
+ion-item{
+  border-bottom-style: dotted;
+  border-bottom-width: 2px;
+  border-color: #670081;
+}
+.bordeRespuestaRadio{
+  border-bottom-width: 0px;
+}
+h6 {
+  font-weight: bolder;
+}
+.principal {
+  width: 100%;
+}
+.arriba {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.iconoChat {
+  position: relative;
+  float: left;
+  width: 20%;
+  font-size: 250%;
+  text-align: center;
+  color: #670081;
+  padding-top: 15px;
+}
+.labelPregunta {
+  position: relative;
+  float: right;
+  width: 80%;
+}
+/*---PREGUNTAS TEXTAREA---*/
+.abajo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.textareaRespuesta {
+  position: relative;
+  float: left;
+  width: 80%;
+  padding-left: 5%;
+}
+.iconoBorrar {
+  position: relative;
+  float: right;
+  width: 20%;
+  font-size: 150%;
+  text-align: center;
+  color: #9400b9;
+}
+/*---PREGUNTAS RADIO---*/
+.centro {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  //margin-left: 15%;
+}
+.respuestaRadio {
+  margin-left: 5px;
+}
+.opcionIzquierda {
+  position: relative;
+  float: left;
+}
+.opcionDerecha {
+  position: relative;
+  float: right;
+}
+.abajo2 {
+  position: relative;
+}
+.textareaRespuesta2 {
+  position: relative;
+  float: left;
+  width: 80%;
+  padding-left: 5%;
+}
+.iconoBorrar2 {
+  position: relative;
+  float: left;
+  width: 20%;
+  font-size: 150%;
+  text-align: center;
+  color: #9400b9;
+  padding-top: 10px;
+}
+/*--FOOTER--*/
+ion-button {
+  font-weight: bold;
+}
+.boton {
+  text-align: center;
+  margin: 5px 0px 5px 0px;
+}
