@@ -17,25 +17,40 @@ ion-textarea {
   //border-width: 1px;
   //border-color: #670081;
   border-radius: 5px;
-  background-color: #f3beff;
+  background-color: #670081;
   padding: 0px 5px 0px 5px;
-  color: #9300b4;
+  color: #ffffff;
 }
-/*ion-item{
-  border-bottom-style: dotted;
-  border-bottom-width: 2px;
-  border-color: #670081;
-}*/
-.bordeRespuestaRadio {
-  border-bottom-width: 0px;
+ion-item {
+  --inner-padding-end: 10px;
+  --padding-start: 0px;
+}
+ion-radio {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.divisor {
+  width: 75%;
+  height: 1px;
+  border-top: 2px solid rgba(103, 0, 129, 0.1);
+  margin-left: auto;
+  margin-right: auto;
 }
 h6 {
   font-weight: bolder;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 .principal {
   width: 100%;
 }
 .arriba {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+}
+.arriba2 {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,12 +62,16 @@ h6 {
   font-size: 250%;
   text-align: center;
   color: #670081;
-  padding-top: 15px;
 }
 .labelPregunta {
   position: relative;
   float: right;
   width: 80%;
+  padding-left: 10px;
+  padding-right: 20px;
+  border-left-style: dotted;
+  border-left-width: 2px;
+  border-left-color: #670081;
 }
 /*---PREGUNTAS TEXTAREA---*/
 .abajo {
@@ -79,10 +98,16 @@ h6 {
   display: flex;
   justify-content: left;
   align-items: center;
-  //margin-left: 15%;
+  padding-left: 20px;
 }
 .respuestaRadio {
   margin-left: 5px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.bordeRespuestaRadio {
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 .opcionIzquierda {
   position: relative;
@@ -91,6 +116,7 @@ h6 {
 .opcionDerecha {
   position: relative;
   float: right;
+  margin-left: 10px;
 }
 .abajo2 {
   position: relative;
@@ -113,6 +139,7 @@ h6 {
 /*--FOOTER--*/
 ion-button {
   font-weight: bold;
+  text-transform: none;
 }
 /*.boton {
   text-align: center;
