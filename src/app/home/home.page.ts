@@ -12,8 +12,8 @@ import { email } from '../login/login.page';
 })
 export class HomePage implements OnInit {
 
+  //Propiedades (Variables)
   email: string;
-
   datos: Todo = {
     respuesta1: null,
     respuesta2: null,
@@ -36,8 +36,9 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     this.email = email;
-
   }
+
+  //Botón para cerrar la sesión
   backButtonEvent() {
     this.platform.backButton.subscribe(() => {
       if (this.router.url === '/home') {
@@ -46,6 +47,7 @@ export class HomePage implements OnInit {
     });
   }
 
+  //Esconder el textarea de las preguntas con radiobutton
   esconderTextArea(value) {
     switch (value) {
       case 2:
@@ -65,6 +67,7 @@ export class HomePage implements OnInit {
     }
   }
 
+  //Comprobar si se han rellenado todos los campos para habilitar el botón de enviar
   comprobarBtn() {
     if (this.datos.respuesta1 == null || this.datos.respuesta2 == null || this.datos.respuesta3 == null || this.datos.respuesta4 == null || this.datos.respuesta5 == null || this.datos.respuesta1 == "" || this.datos.respuesta2 == "" || this.datos.respuesta3 == "" || this.datos.respuesta4 == "" || this.datos.respuesta5 == "") {
       return true;
@@ -77,6 +80,7 @@ export class HomePage implements OnInit {
     }
   }
 
+  //Mensaje de alerta para aceptar las condiciones de la encuesta y enviar los datos a firebase
   async acceptTerms() {
     const alert = await this.alertController.create({
       header: 'Términos y condiciones',
@@ -96,6 +100,7 @@ export class HomePage implements OnInit {
     await alert.present();
   }
 
+  //Guardado de datos en Firebase
   async saveTodo() {
     const saving = await this.loadingController.create({
       message: 'Guardando...',
@@ -109,6 +114,7 @@ export class HomePage implements OnInit {
 
   }
 
+  //Cierra la sesión
   async logout() {
     const loading = await this.loadingController.create({
       message: 'Cerrando sesión...',
@@ -125,6 +131,7 @@ export class HomePage implements OnInit {
       })
   }
 
+  //Botones para borrar los textos
   borrarTxt(num) {
     switch (num) {
       case 1:

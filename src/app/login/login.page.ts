@@ -3,7 +3,6 @@ import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms'
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { LoadingController, Platform } from '@ionic/angular';
-import { HomePage } from '../home/home.page';
 
 export var email: string;
 
@@ -14,9 +13,11 @@ export var email: string;
 })
 export class LoginPage implements OnInit {
 
+  //Propiedades (Variables)
   validations_form: FormGroup;
   errorMessage: string = '';
 
+  //Mensajes de valicación del formulario
   validation_messages = {
     'email': [
       { type: 'required', message: 'El correo electrónico es necesario.' },
@@ -43,12 +44,13 @@ export class LoginPage implements OnInit {
         Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
       ])),
       password: new FormControl('', Validators.compose([
-        Validators.minLength(5),
-        Validators.required
+        Validators.required,
+        Validators.minLength(5)
       ])),
     });
   }
 
+  //Botón para cerrar la aplicación
   backButtonEvent() {
     this.platform.backButton.subscribe(() => {
       if (this.router.url === '/login') {
@@ -57,6 +59,7 @@ export class LoginPage implements OnInit {
     });
   }
 
+  //Inicio de sesión
   tryLogin(value) {
     email = value.email;
     this.authService.doLogin(value)
@@ -75,6 +78,7 @@ export class LoginPage implements OnInit {
       })
   }
 
+  //Borrar mensaje de error de inicio de sesión
   quitarMsgErr() {
     this.errorMessage = "";
   }

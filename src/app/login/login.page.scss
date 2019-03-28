@@ -1,18 +1,3 @@
-.error-message
-{
- color: var(--ion-color-danger);
-}
-
-.go-to-register
-{
-  text-align: center;
-  margin-top: 20px;
-}
-
-.submit-btn
-{
-  margin-top: 40px;
-}
 ion-title {
   text-align: center;
   font-weight: bold;
@@ -22,6 +7,12 @@ ion-button {
   font-weight: bold;
   text-transform: none;
 }
-/*.boton {
-  text-align: center;
-}*/
+.error-message
+{
+ color: var(--ion-color-danger);
+}
+.submit-btn
+{
+  margin-top: 40px;
+}
+

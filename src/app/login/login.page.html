@@ -1,11 +1,13 @@
+<!--HEADER-->
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Iniciar Sesión</ion-title>
+    <ion-title>Iniciar sesión</ion-title>
   </ion-toolbar>
 </ion-header>
-
+<!--CONTENT-->
 <ion-content padding class="form-content">
   <form class="form" [formGroup]="validations_form" (ngSubmit)="tryLogin(validations_form.value)">
+    <!--EMAIL-->
     <ion-item>
       <ion-label position="floating" color="primary">Correo Electrónico</ion-label>
       <ion-input type="text" (click)="quitarMsgErr()" formControlName="email"></ion-input>
@@ -18,6 +20,7 @@
         </div>
       </ng-container>
     </div>
+    <!--CONTRASEÑA-->
     <ion-item>
       <ion-label position="floating" color="primary">Contraseña</ion-label>
       <ion-input type="password" (click)="quitarMsgErr()" formControlName="password"></ion-input>
@@ -30,8 +33,10 @@
         </div>
       </ng-container>
     </div>
+    <!--BOTON-->
     <div class="boton">
-      <ion-button expand="block" class="submit-btn" type="submit" [disabled]="!validations_form.valid">Iniciar sesión</ion-button>
+      <ion-button expand="block" class="submit-btn" type="submit" [disabled]="!validations_form.valid">Iniciar sesión
+      </ion-button>
     </div>
     <label class="error-message">{{errorMessage}}</label>
   </form>

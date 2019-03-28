@@ -12,7 +12,6 @@
 </ion-header>
 <!--CONTENT-->
 <ion-content>
-  <!--LISTA DE ITEMS-->
   <ion-list lines="none" padding>
     <!--PREGUNTA 1-->
     <ion-item>
@@ -38,7 +37,7 @@
     </ion-item>
     <!--DIVISOR-->
     <ion-item>
-        <div class="divisor"></div>
+      <div class="divisor"></div>
     </ion-item>
     <!--PREGUNTA 2-->
     <ion-item>
@@ -53,18 +52,14 @@
         </div>
         <div class="centro">
           <ion-radio-group [(ngModel)]="datos.respuesta2" required>
-            <div class="opcionIzquierda">
-              <ion-item class="bordeRespuestaRadio">
-                <ion-radio value="Si">Si</ion-radio>
-                <ion-label class="respuestaRadio"> Si</ion-label>
-              </ion-item>
-            </div>
-            <div class="opcionDerecha">
-              <ion-item class="bordeRespuestaRadio">
-                <ion-radio value="No">No</ion-radio>
-                <ion-label class="respuestaRadio">No</ion-label>
-              </ion-item>
-            </div>
+            <ion-item>
+              <ion-label class="radioLabel">Si</ion-label>
+              <ion-radio slot="start" value="Si"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label class="radioLabel">No</ion-label>
+              <ion-radio slot="start" value="No"></ion-radio>
+            </ion-item>
           </ion-radio-group>
         </div>
         <div class="abajo2" [hidden]="esconderTextArea(2)">
@@ -80,7 +75,7 @@
     </ion-item>
     <!--DIVISOR-->
     <ion-item>
-        <div class="divisor"></div>
+      <div class="divisor"></div>
     </ion-item>
     <!--PREGUNTA 3-->
     <ion-item>
@@ -105,7 +100,7 @@
     </ion-item>
     <!--DIVISOR-->
     <ion-item>
-        <div class="divisor"></div>
+      <div class="divisor"></div>
     </ion-item>
     <!--PREGUNTA 4-->
     <ion-item>
@@ -120,18 +115,14 @@
         </div>
         <div class="centro">
           <ion-radio-group [(ngModel)]="datos.respuesta4">
-            <div class="opcionIzquierda">
-              <ion-item class="bordeRespuestaRadio">
-                <ion-radio value="Si">Si</ion-radio>
-                <ion-label class="respuestaRadio">Si</ion-label>
-              </ion-item>
-            </div>
-            <div class="opcionDerecha">
-              <ion-item class="bordeRespuestaRadio">
-                <ion-radio value="No">No</ion-radio>
-                <ion-label class="respuestaRadio">No</ion-label>
-              </ion-item>
-            </div>
+            <ion-item>
+              <ion-label class="radioLabel">Si</ion-label>
+              <ion-radio slot="start" value="Si"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label class="radioLabel">No</ion-label>
+              <ion-radio slot="start" value="No"></ion-radio>
+            </ion-item>
           </ion-radio-group>
         </div>
         <div class="abajo2" [hidden]="esconderTextArea(4)">
@@ -146,7 +137,7 @@
     </ion-item>
     <!--DIVISOR-->
     <ion-item>
-        <div class="divisor"></div>
+      <div class="divisor"></div>
     </ion-item>
     <!--PREGUNTA 5-->
     <ion-item>
@@ -174,6 +165,7 @@
 <!--FOOTER-->
 <ion-footer>
   <div class="boton">
-    <ion-button expand="block" (click)="acceptTerms()" id="btn" name="btn" [disabled]="comprobarBtn()">Enviar</ion-button>
+    <ion-button expand="block" (click)="acceptTerms()" id="btn" name="btn" [disabled]="comprobarBtn()">Enviar
+    </ion-button>
   </div>
 </ion-footer>
