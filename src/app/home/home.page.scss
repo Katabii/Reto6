@@ -7,16 +7,16 @@ ion-title {
   font-size: 80%;
   font-style: italic;
   font-weight: bold;
-  color: rgb(245, 245, 245);
+  color: var(--ion-color-primary-contrast-rgb);
   margin-top: 3px;
 }
 /*--CONTENT--*/
 /*---GENERAL---*/
 ion-textarea {
   border-radius: 5px;
-  background-color: #670081;
+  background-color: var(--ion-color-primary);
   padding: 0px 5px 0px 5px;
-  color: #ffffff;
+  color: var(--ion-color-primary-contrast);
 }
 ion-item {
   --inner-padding-end: 10px;
@@ -26,7 +26,7 @@ ion-item {
 .divisor {
   width: 75%;
   height: 1px;
-  border-top: 2px solid rgba(103, 0, 129, 0.1);
+  border-top: 2px solid var(--ion-color-primary-divisor);
   margin-left: auto;
   margin-right: auto;
 }
@@ -37,7 +37,7 @@ h6 {
 }
 .principal {
   width: 100%;
-  background-color: rgba(214, 79, 248, 0.1);
+  background-color: var(--ion-color-primary-principal-background);
   border-radius: 5px;
   padding: 10px 0px 10px 0px;
 }
@@ -58,8 +58,8 @@ h6 {
   width: 20%;
   font-size: 250%;
   text-align: center;
-  color: #670081;
-  border-right: 2px dotted #670081;
+  color: var(--ion-color-primary);
+  border-right: 2px dotted var(--ion-color-primary);
 }
 .labelPregunta {
   position: relative;
@@ -86,18 +86,18 @@ h6 {
   width: 20%;
   font-size: 150%;
   text-align: center;
-  color: #9400b9;
+  color: var(--ion-color-primary-shade);
 }
 /*---PREGUNTAS RADIO---*/
 ion-radio {
   margin-top: 0px;
   margin-bottom: 0px;
-  --color: #670081;
+  --color: var(--ion-color-primary);
 }
 ion-radio-group > ion-item {
-  --background: var(--ion-item-background,var(--ion-background-color,transparent));
+  --background: var(--ion-item-background, var(--ion-background-color, transparent));
 }
-.radioLabel{
+.radioLabel {
   font-weight: bold;
 }
 .centro {
@@ -121,7 +121,7 @@ ion-radio-group > ion-item {
   width: 20%;
   font-size: 150%;
   text-align: center;
-  color: #9400b9;
+  color: var(--ion-color-primary-shade);
   padding-top: 10px;
 }
 /*--FOOTER--*/
